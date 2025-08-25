@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A minimal, single‑file personal landing page with a centered photo and quote." />
+  <meta name="color-scheme" content="light dark" />
+  <title>Javier Ogaz</title>
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #6b7280;
+      --ring: #e5e7eb;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #0b0b0b;
+        --fg: #f3f4f6;
+        --muted: #9ca3af;
+        --ring: #1f2937;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      width: min(88ch, 92vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(1rem, 2.2vw, 1.5rem);
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    figure {
+      margin: 0;
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .avatar {
+      width: min(360px, 70vw);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 1px 0 var(--ring), 0 20px 40px -24px rgba(0,0,0,.25);
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw + 0.2rem, 1.35rem);
+      font-weight: 500;
+    }
+
+    cite {
+      display: block;
+      margin-top: .35rem;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: .01em;
+    }
+
+    footer {
+      margin-top: .25rem;
+      font-size: .875rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <figure>
+      <img class="avatar" src="profile.png" alt="geometry" loading="eager" decoding="async" />
+
+      <figcaption>
+        <blockquote>“Raise your words, not your voice. It is rain that grows flowers, not thunder.”</blockquote>
+        <cite>— Rumi</cite>
+      </figcaption>
+    </figure>
+
+    <footer>
+      © <span id="y"></span> Javier Ogaz
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
